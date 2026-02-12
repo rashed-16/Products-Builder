@@ -1,6 +1,7 @@
 import Image from "./Image"
 import Button from "./ui/Button"
 import type { IProduct } from "../interfaces";
+import { txtSlicer } from "../utils/function";
 
 interface IProps
 {
@@ -17,7 +18,7 @@ const ProductCard = ({product}:IProps) => {
    />
    <h3>{title}</h3>
    <p>
-    {description}
+    {txtSlicer(description)}
    </p>
    <div className="flex items-center justify-between">
     <span>$500000</span>

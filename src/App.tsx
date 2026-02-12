@@ -1,4 +1,4 @@
-import ProductCard from './components/productCard'
+import ProductCard from './components/ProductCard'
 import {productInformation} from "./data"
 import type { IProduct } from './interfaces'
 import './App.css'
