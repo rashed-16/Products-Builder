@@ -4,7 +4,7 @@ import type { IProduct } from './interfaces'
 import './App.css'
 import Modal from './components/ui/Modal'
 import{ useState} from 'react'
-import type {ChangeEvent} from 'react'
+import type {ChangeEvent, FormEvent} from 'react'
 import { Button } from '@headlessui/react'
 import Input from './components/ui/Input'
 
@@ -39,12 +39,30 @@ const [isOpen, setIsOpen] = useState(false)
       [name]:value
     })
   }
+  const submitHandler=(event:FormEvent<HTMLFormElement>):void=>{
+    event.preventDefault();
+    console.log(product)
+  }
+  const onCancel =()=>{
+    setProduct({
+      title:'',
+      description:'',
+      imageURL: '',
+       price:'',
+       colors:[],
+       category:{
+        name:'',
+        imageURL:'',
+       }
+    })
+    close();
+  }
 
  const renderProductList = productInformation.map((pro: IProduct) => (
   <ProductCard key={pro.id} product={pro} />
 ));
 const renderFormInputList=formInputList.map(input=>(
-  <div className="flex flex-col">
+  <div className="flex flex-col" key={input.id}>
     <label htmlFor={input.id} className="mb[1px] text-sm font-medium text-gray-700">{input.label}</label>
     <Input type="text" name={input.name} id={input.id}
      className='border-2 border-gray-300' value={product[input.name]} onChange={onChangeHandler}/>
@@ -60,11 +78,11 @@ const renderFormInputList=formInputList.map(input=>(
       {renderProductList}
       </div>
       <Modal isOpen={isOpen} closeModal={close} title="Add A New Product">
-         <form className="space-y-3">
+         <form className="space-y-3" onSubmit={submitHandler}>
           {renderFormInputList}
           <div className='flex items-center space-x-3'>
            <Button className="bg-indigo-700 hover:bg-indigo-800">Submit</Button>
-           <Button className="bg-gray-400 hover:bg-gray-700">Cancel</Button>
+           <Button className="bg-gray-400 hover:bg-gray-700" onClick={onCancel}>Cancel</Button>
           </div>
          </form> 
         
