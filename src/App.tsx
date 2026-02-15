@@ -5,8 +5,10 @@ import './App.css'
 import Modal from './components/ui/Modal'
 import{ useState} from 'react'
 import type {ChangeEvent, FormEvent} from 'react'
-import { Button } from '@headlessui/react'
+import { Button} from '@headlessui/react'
 import Input from './components/ui/Input'
+import { productValidation } from './validation/productValid'
+import ErrorMessage from './components/ErrorMessage'
 
 const App = ()=> {
   const [product,setProduct]=useState<IProduct>({
@@ -21,6 +23,7 @@ const App = ()=> {
        }
     }
   )
+  const[errors,setErrors]=useState({title:"",description:"",imageURL:"",price:""});
 
 const [isOpen, setIsOpen] = useState(false)
 
@@ -38,11 +41,11 @@ const [isOpen, setIsOpen] = useState(false)
       ...product,
       [name]:value
     })
-  }
-  const submitHandler=(event:FormEvent<HTMLFormElement>):void=>{
-    event.preventDefault();
-    console.log(product)
-  }
+    setErrors({
+      ...errors,
+      [name]:"",
+    })
+  };
   const onCancel =()=>{
     setProduct({
       title:'',
@@ -57,6 +60,22 @@ const [isOpen, setIsOpen] = useState(false)
     })
     close();
   }
+   const submitHandler=(event:FormEvent<HTMLFormElement>):void=>{
+    event.preventDefault();
+   const error = productValidation({
+  title: product.title,
+  description: product.description,
+  imageURL: product.imageURL,
+  price: product.price,
+});
+    const hasErrorMsg=Object.values(error).some(value=>value==="")&&Object.values(error).every(value=>value==="");
+    if(!hasErrorMsg)
+    {
+      setErrors(errors)
+      return;
+    }
+    console.log("OK");
+  }
 
  const renderProductList = productInformation.map((pro: IProduct) => (
   <ProductCard key={pro.id} product={pro} />
@@ -66,6 +85,9 @@ const renderFormInputList=formInputList.map(input=>(
     <label htmlFor={input.id} className="mb[1px] text-sm font-medium text-gray-700">{input.label}</label>
     <Input type="text" name={input.name} id={input.id}
      className='border-2 border-gray-300' value={product[input.name]} onChange={onChangeHandler}/>
+     {errors[input.name]&& <ErrorMessage msg={errors[input.name]}/>}
+     
+     
   </div>
 ));
 
