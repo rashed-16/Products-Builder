@@ -1,5 +1,5 @@
 import ProductCard from './components/ProductCard'
-import {formInputList, productInformation} from "./data"
+import {colors, formInputList, productInformation} from "./data"
 import type { IProduct } from './interfaces'
 import './App.css'
 import Modal from './components/ui/Modal'
@@ -9,6 +9,7 @@ import { Button} from '@headlessui/react'
 import Input from './components/ui/Input'
 import { productValidation } from './validation/productValid'
 import ErrorMessage from './components/ErrorMessage'
+import CircleColor from './components/CircleColor'
 
 const App = ()=> {
   const [product,setProduct]=useState<IProduct>({
@@ -26,6 +27,8 @@ const App = ()=> {
   const[errors,setErrors]=useState({title:"",description:"",imageURL:"",price:""});
 
 const [isOpen, setIsOpen] = useState(false)
+const[tempColors,setTempColor]=useState<string[]>([]);
+console.log(tempColors);
 
   function open() {
     setIsOpen(true)
@@ -45,7 +48,7 @@ const [isOpen, setIsOpen] = useState(false)
       ...errors,
       [name]:"",
     })
-  };
+  }; 
   const onCancel =()=>{
     setProduct({
       title:'',
@@ -90,6 +93,8 @@ const renderFormInputList=formInputList.map(input=>(
      
   </div>
 ));
+const renderProductColors=colors.map(
+  color=><CircleColor key={color} color={color} onClick={()=>setTempColor(prev=>[...prev,color])}/>);
 
   return (
     <main className="container">
@@ -102,6 +107,9 @@ const renderFormInputList=formInputList.map(input=>(
       <Modal isOpen={isOpen} closeModal={close} title="Add A New Product">
          <form className="space-y-3" onSubmit={submitHandler}>
           {renderFormInputList}
+          <div className="flex items-center space-x-2">
+            {renderProductColors}
+          </div>
           <div className='flex items-center space-x-3'>
            <Button className="bg-indigo-700 hover:bg-indigo-800">Submit</Button>
            <Button className="bg-gray-400 hover:bg-gray-700" onClick={onCancel}>Cancel</Button>
