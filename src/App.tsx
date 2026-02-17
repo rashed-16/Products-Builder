@@ -26,16 +26,30 @@ const App = () => {
     },
   });
   const [products, setProducts] = useState<IProduct[]>(productInformation);
+  const[productToEdit,setProductToEdit]=useState<IProduct>({
+      title: "",
+      description: "",
+      imageURL: "",
+      price: "",
+      colors: [],
+      category: {
+        name: "",
+        imageURL: "",
+      },
+    });
   const [errors, setErrors] = useState({
-    title: "",
-    description: "",
-    imageURL: "",
-    price: "",
-  });
+  title: "",
+  description: "",
+  imageURL: "",
+  price: "",
+  colors: "",
+});
 
   const [isOpen, setIsOpen] = useState(false);
   const [tempColors, setTempColor] = useState<string[]>([]);
+  const [isOpenEditModal, setIsOpenEditModal] = useState(false);
   const[selectedCategory,setSelectedCategory]=useState(categories[0]);
+  console.log(productToEdit)
 
   function open() {
     setIsOpen(true);
@@ -43,6 +57,13 @@ const App = () => {
 
   function close() {
     setIsOpen(false);
+  }
+  function openEditModal() {
+    setIsOpenEditModal(true);
+  }
+
+  function closeEditModal() {
+   setIsOpenEditModal(false);
   }
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
@@ -111,7 +132,7 @@ const App = () => {
   };
 
   const renderProductList = products.map((pro: IProduct) => (
-    <ProductCard key={pro.id} product={pro} />
+    <ProductCard key={pro.id} product={pro} setProductToEdit={setProductToEdit} openEditModal={openEditModal}/>
   ));
   const renderFormInputList = formInputList.map((input) => (
     <div className="flex flex-col" key={input.id}>
@@ -158,10 +179,43 @@ const App = () => {
       <Modal isOpen={isOpen} closeModal={close} title="Add A New Product">
         <form className="space-y-3" onSubmit={submitHandler}>
           {renderFormInputList}
+          <Example selected={selectedCategory} setSelected={setSelectedCategory}/>
           <div className="flex items-center flex-wrap space-x-1">
             {renderProductColors}
           </div>
+          <div className="flex items-center flex-wrap space-x-1">
+            {tempColors.map((color) => (
+              <span
+                key={color}
+                className="p-1 mr-1 mb-1 text-xs rounded-md text-white"
+                style={{ backgroundColor: color }}
+              >
+                {color}
+              </span>
+            ))}
+          </div>
+          
+          <div className="flex items-center space-x-3">
+            <Button className="bg-indigo-700 hover:bg-indigo-800">
+              Submit
+            </Button>
+            <Button
+              className="bg-gray-400 hover:bg-gray-700"
+              onClick={onCancel}
+            >
+              Cancel
+            </Button>
+          </div>
+        </form>
+      </Modal>
+      {/* Edit */}
+      <Modal isOpen={isOpenEditModal} closeModal={closeEditModal} title="Add A New Product">
+        <form className="space-y-3" onSubmit={submitHandler}>
+          {renderFormInputList}
           <Example selected={selectedCategory} setSelected={setSelectedCategory}/>
+          <div className="flex items-center flex-wrap space-x-1">
+            {renderProductColors}
+          </div>
           <div className="flex items-center flex-wrap space-x-1">
             {tempColors.map((color) => (
               <span
