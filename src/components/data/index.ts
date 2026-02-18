@@ -1,7 +1,7 @@
-import {v4 as uuid } from 'uuid';
-import type {IFormInput, IProduct,ICategory} from "../interfaces"
+import { v4 as uuid } from "uuid";
+import type { ICategory, IFormInput, IProduct } from "../../interfaces/index";
 
-export const productInformation: IProduct[] = [
+export const productList: IProduct[] = [
   {
     id: uuid(),
     title: "Smart Watch",
@@ -151,65 +151,86 @@ export const formInputsList: IFormInput[] = [
   },
 ];
 
-export const formInputList : IFormInput[]=[
-    {
-        id:"title",
-        name:"title",
-        label:"Product Title",
-        type:"text",
-    },
-    {
-        id:"description",
-        name:"description",
-        label:"Product description",
-        type:"text",
-    },
-    {
-        id:"image",
-        name:"imageURL",
-        label:"Product Image URL",
-        type:"text",
-    },
-    {
-        id:"price",
-        name:"price",
-        label:"Product Price",
-        type:"text",
-    },
-]
 export const colors: string[] = [
-  "#a855f7",
-  "#2563eb",
-  "#84D2C5",
-  "#13005A",
-  "#A31ACB",
-  "#FF6F31",
-  "#3C2A21",
   "#6C4AB6",
-  "#CB1C8D",
-  "#000000",
-  "#645CBB",
-  "#1F8A70",
-  "#820000",
   "#FF0032",
+  "#2563eb",
+  "#FF6E31",
+  "#D268F2",
+  "#1563e5",
+  "#F26E71",
+  "#8F2032",
+  "#C5633b",
+  "#FD6231",
+  "#FF2032",
+  "#2BA3eb",
+  "#AB6E31",
+  "#FF6032",
+  "#AD6231",
+  "#FFC032",
+  "#256FEB",
+  "#2F6E31",
 ];
+
 export const categories: ICategory[] = [
-    {
-        id: uuid(),
-        name: 'NoteBooks',
-        imageURL : 'https://images.pexels.com/photos/843227/pexels-photo-843227.jpeg?auto=compress&cs=tinysrgb&w=600',
-    },
-    {
-        id: uuid(),
-        name: 'To-Do-List',
-        imageURL: 'https://images.pexels.com/photos/6192131/pexels-photo-6192131.jpeg?auto=compress&cs=tinysrgb&w=600'
-    },
-    {
-        id: uuid(),
-        name: 'pens',
-        imageURL: 'https://images.pexels.com/photos/867482/pexels-photo-867482.jpeg?auto=compress&cs=tinysrgb&w=600',
-    }
+  {
+    id: uuid(),
+    name: "Headset",
+    imageURL:
+      "https://plus.unsplash.com/premium_photo-1679913792906-13ccc5c84d44?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: uuid(),
+    name: "Shoes",
+    imageURL:
+      "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D",
+  },
+  {
+    id: uuid(),
+    name: "PC Desktop",
+    imageURL:
+      "https://images.unsplash.com/file-1707883121023-8e3502977149image?w=416&dpr=2&auto=format&fit=crop&q=60",
+  },
+  {
+    id: uuid(),
+    name: "Creams",
+    imageURL:
+      "https://images.unsplash.com/photo-1615396899839-c99c121888b0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D",
+  },
+  {
+    id: uuid(),
+    name: "Makeup",
+    imageURL:
+      "https://plus.unsplash.com/premium_photo-1677541205130-51e60e937318?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D",
+  },
+  {
+    id: uuid(),
+    name: "Headset",
+    imageURL:
+      "https://plus.unsplash.com/premium_photo-1679913792906-13ccc5c84d44?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: uuid(),
+    name: "Shoes",
+    imageURL:
+      "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D",
+  },
+  {
+    id: uuid(),
+    name: "PC Desktop",
+    imageURL:
+      "https://images.unsplash.com/file-1707883121023-8e3502977149image?w=416&dpr=2&auto=format&fit=crop&q=60",
+  },
+  {
+    id: uuid(),
+    name: "Creams",
+    imageURL:
+      "https://images.unsplash.com/photo-1615396899839-c99c121888b0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D",
+  },
+  {
+    id: uuid(),
+    name: "Makeup",
+    imageURL:
+      "https://plus.unsplash.com/premium_photo-1677541205130-51e60e937318?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D",
+  },
 ];
-
-
-

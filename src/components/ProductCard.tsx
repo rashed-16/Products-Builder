@@ -1,56 +1,75 @@
-import Image from "./Image"
-import Button from "./ui/Button"
-import type { IProduct } from "../interfaces";
-import { txtSlicer } from "../utils/function";
-import CircleColor from "./CircleColor";
+import {type IProduct } from "../interfaces";
+import {textSlicer} from "../utils/function";
+import Image from "./Image";
+import Button from "./ui/Button";
+import CircleColor from "./ui/CircleColor";
 
-interface IProps
-{
-    product:IProduct;
-    setProductToEdit:(product:IProduct)=>void;
-    openEditModal:()=>void;
-    idx:number;
-    setProductToEditIdx:(value:number)=>void;
-}
-const ProductCard = ({product,setProductToEdit,openEditModal,idx,setProductToEditIdx}:IProps) => {
-    const{title,description,imageURL,price,colors,category}=product;
-    const renderProductColors=colors.map(
-  color=>(<CircleColor key={color} color={color}
-   />
-));
-const onEdit=()=>{
-  setProductToEdit(product);
-  openEditModal();
-  setProductToEditIdx(idx)
-}
-  return( 
-  <div className="max-w-sm md:max-w-lg mx-auto md:mx-0 border rounded-md p-2 flex flex-col">
-  <Image
-   imageURL={imageURL} 
-   alt={"Product Name"} 
-   className="round-md h-52 w-full lg:object-cover"
-   />
-   <h3 className="text-lg font-semibold">
-  {txtSlicer(title, 25)}
-</h3>
-<p className="text-xs text-gray-500 wrap-break-words">
-  {txtSlicer(description)}
-</p>
-<div className="flex items-center flex-wrap space-x-1">{renderProductColors}</div>
-
-   <div className="flex items-center justify-between">
-    <span>${price}</span>
-     <Image imageURL={category.imageURL}
-   alt={category.name} 
-   className="m-10 h-10 rounded-full object-bottom"/>
-   </div>
-   <div className="flex items-center justify-between space-x-2 mt-5">
-      <Button className="bg-indigo-700 hover:bg-indigo-800"onClick={onEdit}>Edit</Button>
-      <Button className="bg-red-700 hover:bg-red-800">Delete</Button>
-   </div>
-  </div>
-   
-)
+interface IProps {
+  product: IProduct;
+  setProductToEdit: (product: IProduct) => void;
+  openEditModal: () => void;
+  idx: number;
+  setProductToEditIndex: (value: number) => void;
+  setTempColors: (value: string[]) => void;
 }
 
-export default ProductCard
+const ProductCard = ({
+  product,
+  setProductToEdit,
+  openEditModal,
+  idx,
+  setProductToEditIndex,
+  setTempColors,
+}: IProps) => {
+  const { title, description, imageURL, price, colors, category } = product;
+
+  /* ـــــــــــ RENDER ـــــــــــ */
+  const renderProductColors = colors.map((color) => (
+    <CircleColor key={color} color={color} />
+  ));
+
+  /* ـــــــــــ HANDLER ـــــــــــ */
+  const onEdit = () => {
+    setProductToEdit(product);
+    setProductToEditIndex(idx);
+    setTempColors(product.colors);
+    openEditModal();
+  };
+
+  return (
+    <div className="mx-auto flex max-w-sm flex-col space-y-3 rounded-md border p-2 md:mx-0 md:max-w-lg lg:justify-between">
+      <Image
+        imageURL={imageURL}
+        alt={title}
+        className="mb-2 h-52 w-full rounded-md object-cover"
+      />
+
+      <h3 className="text-lg font-semibold">{textSlicer(title, 25)}</h3>
+      <p className="break-words text-xs text-gray-500">
+        {textSlicer(description)}
+      </p>
+
+      <div className="flex flex-wrap items-center space-x-1">
+        {renderProductColors}
+      </div>
+
+      <div className="flex items-center justify-between">
+        <span className="text-lg font-semibold text-indigo-600">${price}</span>
+        <Image
+          imageURL={category.imageURL}
+          alt={category.name}
+          className="h-10 w-10 rounded-full object-cover"
+        />
+      </div>
+
+      <div className="mt-5 flex items-center justify-between space-x-2">
+        <Button className="bg-indigo-700 hover:bg-indigo-800" onClick={onEdit}>
+          EDIT
+        </Button>
+        <Button className="bg-red-700 hover:bg-red-800">DELETE</Button>
+      </div>
+    </div>
+  );
+};
+
+export default ProductCard;

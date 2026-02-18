@@ -1,1 +1,0 @@
-export type productNameType='title'|'description'|'imageURL'|'price';

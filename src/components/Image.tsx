@@ -1,10 +1,11 @@
-interface IProps{
-imageURL:string;
-alt:string;
-className:string;
-}
-const Image = ({imageURL,alt,className}: IProps) => {
-  return  <img src={imageURL} alt={alt} className={className}/>
+interface IProps {
+  imageURL: string;
+  alt: string;
+  className: string;
 }
 
-export default Image
+const Image = ({ imageURL, alt, className }: IProps) => {
+  return <img src={imageURL} alt={alt} className={className} />;
+};
+
+export default Image;
