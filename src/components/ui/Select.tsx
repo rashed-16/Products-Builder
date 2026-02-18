@@ -6,13 +6,15 @@ import { categories } from '../../data'
 import type { ICategory } from '../../interfaces'
 
 interface IProps{
-    selected:ICategory;
+    selected:{name:string,imageURL:string};
     setSelected:(category:ICategory)=>void;
 }
 
-export default function Example({selected,setSelected}:IProps) {
+export default function Example({selected}:IProps) {
   return (
-    <Listbox value={selected} onChange={setSelected}>
+    <Listbox value={selected} onChange={value=>{
+      console.log("changed",value)
+    }}>
       <Label className="block text-sm/6 font-medium text-white">Category</Label>
       <div className="relative mt-2">
         <ListboxButton className="grid w-full cursor-default grid-cols-1 rounded-md bg-gray-800/50 py-1.5 pr-2 pl-3 text-left text-white outline-1 -outline-offset-1 outline-white/10 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-indigo-500 sm:text-sm/6">
