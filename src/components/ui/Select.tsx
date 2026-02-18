@@ -10,12 +10,12 @@ import {
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { categories } from "../data";
 import type { ICategory } from "../../interfaces";
-import { useState } from "react";
+interface IProps {
+  selected: ICategory;
+  setSelected: React.Dispatch<React.SetStateAction<ICategory>>;
+}
 
-
-const Select = () =>{
-
-  const [selected, setSelected] = useState<ICategory>(categories[0]);
+const Select = ({ selected, setSelected }: IProps) => {
   return (
     <Listbox value={selected} onChange={setSelected}>
       <Label className="block text-sm font-medium text-gray-700">
