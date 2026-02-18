@@ -28,7 +28,7 @@ export const productValidation = (product: {
 
   if (
     !product.title.trim() ||
-    product.title.length < 10 ||
+    product.title.length < 5 ||
     product.title.length > 80
   ) {
     errors.title = "Product title must be between 10 and 80 characters!";

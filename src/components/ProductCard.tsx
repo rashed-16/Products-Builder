@@ -11,6 +11,8 @@ interface IProps {
   idx: number;
   setProductToEditIndex: (value: number) => void;
   setTempColors: (value: string[]) => void;
+    openRemoveModal: (idx: number) => void;
+
 }
 
 const ProductCard = ({
@@ -20,6 +22,7 @@ const ProductCard = ({
   idx,
   setProductToEditIndex,
   setTempColors,
+  openRemoveModal
 }: IProps) => {
   const { title, description, imageURL, price, colors, category } = product;
 
@@ -45,7 +48,7 @@ const ProductCard = ({
       />
 
       <h3 className="text-lg font-semibold">{textSlicer(title, 25)}</h3>
-      <p className="break-words text-xs text-gray-500">
+      <p className="wrap-break-word text-xs text-gray-500">
         {textSlicer(description)}
       </p>
 
@@ -66,7 +69,9 @@ const ProductCard = ({
         <Button className="bg-indigo-700 hover:bg-indigo-800" onClick={onEdit}>
           EDIT
         </Button>
-        <Button className="bg-red-700 hover:bg-red-800">DELETE</Button>
+       <Button className="bg-red-700 hover:bg-red-800" onClick={() => openRemoveModal(idx)}>
+         DELETE
+       </Button>
       </div>
     </div>
   );

@@ -53,13 +53,13 @@ export const productList: IProduct[] = [
     description:
       "Portable wireless speaker with deep bass, long battery life, and waterproof design.",
     imageURL:
-      "https://i.pinimg.com/1200x/ba/f3/f1/baf3f164e6fa3a4903a22644d308deb9.jpg",
+      "https://images.unsplash.com/photo-1687363251769-560d957b8847?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: "270000",
     colors: ["#020617", "#6366f1", "#eab308"],
     category: {
       name: "Audio",
       imageURL:
-        "https://i.pinimg.com/1200x/ba/f3/f1/baf3f164e6fa3a4903a22644d308deb9.jpg",
+        "https://images.unsplash.com/photo-1687363251769-560d957b8847?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   },
   {
@@ -167,9 +167,6 @@ export const colors: string[] = [
   "#AB6E31",
   "#FF6032",
   "#AD6231",
-  "#FFC032",
-  "#256FEB",
-  "#2F6E31",
 ];
 
 export const categories: ICategory[] = [
@@ -205,32 +202,26 @@ export const categories: ICategory[] = [
   },
   {
     id: uuid(),
-    name: "Headset",
+    name: "Phones",
     imageURL:
-      "https://plus.unsplash.com/premium_photo-1679913792906-13ccc5c84d44?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80",
+  },
+  {
+    id: uuid(),
+    name: "Camera",
+    imageURL:
+      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800&q=80",
+  },
+  {
+    id: uuid(),
+    name: "Lamp",
+    imageURL:
+      "https://plus.unsplash.com/premium_photo-1679913792906-lamp.jpg?w=400&q=80",
   },
   {
     id: uuid(),
     name: "Shoes",
     imageURL:
       "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D",
-  },
-  {
-    id: uuid(),
-    name: "PC Desktop",
-    imageURL:
-      "https://images.unsplash.com/file-1707883121023-8e3502977149image?w=416&dpr=2&auto=format&fit=crop&q=60",
-  },
-  {
-    id: uuid(),
-    name: "Creams",
-    imageURL:
-      "https://images.unsplash.com/photo-1615396899839-c99c121888b0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D",
-  },
-  {
-    id: uuid(),
-    name: "Makeup",
-    imageURL:
-      "https://plus.unsplash.com/premium_photo-1677541205130-51e60e937318?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D",
   },
 ];
