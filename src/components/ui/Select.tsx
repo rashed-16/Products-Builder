@@ -12,7 +12,7 @@ import { categories } from "../data";
 import type { ICategory } from "../../interfaces";
 interface IProps {
   selected: ICategory;
-  setSelected: React.Dispatch<React.SetStateAction<ICategory>>;
+  setSelected: (val: ICategory) => void;
 }
 
 const Select = ({ selected, setSelected }: IProps) => {
